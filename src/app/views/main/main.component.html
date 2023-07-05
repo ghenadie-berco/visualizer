@@ -1,0 +1,78 @@
+<div #mainView class="view-container flex-column container">
+
+  <!-- Screen -->
+  <div class="flex view-wrapper screen pad-10 overflow-hidden ">
+
+    <!-- Background -->
+    <app-box [background]="'linear-gradient(black, #001966)'"></app-box>\
+
+    <!-- Content -->
+    <ng-container [ngSwitch]="mode">
+
+      <!-- Shift Box -->
+      <app-shift-box 
+        *ngSwitchCase="'SHIFT'" 
+        [isOn]="state.shiftIsOn"
+        [direction]="state.shiftDir"
+        [loopTime]="state.shiftSpeed"
+        [boxSize]="state.shiftBoxSize"
+        [background]="'linear-gradient(#ffffff, #ffffff, #fffff7)'">
+      </app-shift-box>
+      
+      <!-- Strobe Box -->
+      <app-strobe-box 
+        *ngSwitchCase="'STROBE'" 
+        [isOn]="state.strobeIsOn"
+        [rate]="state.strobeRate"
+        [background]="'linear-gradient(#ffffff, #ffffff, #fffff7)'">
+      </app-strobe-box>
+
+    </ng-container>
+
+  </div>
+
+
+  <!-- Control Panel -->
+  <div class="flex-row pad-10 gap-10">
+
+    <!-- Mode Selection -->
+    <app-dropdown-list
+      [label]="'Mode'"
+      [options]="modeOptions"
+      [value]="selectedModeId"
+      (onValueChange)="onModeChange($event)">
+    </app-dropdown-list>
+
+    <!-- Mode Specific Controls -->
+    <ng-container [ngSwitch]="mode">
+
+      <!-- Shift Controls -->
+      <app-shift-controls 
+        *ngSwitchCase="'SHIFT'"
+        [isOn]="state.shiftIsOn"
+        [direction]="state.shiftDir"
+        [speed]="state.shiftSpeed"
+        (onToggleOn)="state.shiftIsOn = $event"
+        (onDirectionChange)="state.shiftDir = $event"
+        (onSpeedChange)="state.shiftSpeed = $event">
+      </app-shift-controls>
+
+      <!-- Strobe Controls -->
+      <app-strobe-controls 
+        *ngSwitchCase="'STROBE'"
+        [isOn]="state.strobeIsOn"
+        [rate]="state.strobeRate"
+        (onToggleOn)="state.strobeIsOn = $event"
+        (onRateChange)="state.strobeRate = $event">
+      </app-strobe-controls>
+
+    </ng-container>
+    <!-- Spring -->
+    <span class="flex"></span>
+
+    <!-- Full Screen Toggle -->
+    <button class="btn control" (click)="toggleFullScreen()" [disabled]="!fullScreenEnabled()">Full Screen</button>
+  </div>
+
+
+</div>

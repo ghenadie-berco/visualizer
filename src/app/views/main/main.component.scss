@@ -1,0 +1,13 @@
+$panel-bg: linear-gradient(#525252, #363636);
+$shadow-color: #0000006b;
+
+.container {
+  background: $panel-bg;
+  box-shadow: 2px 5px 5px $shadow-color;
+  z-index: 10;
+}
+
+.screen {
+  border-radius: 4px;
+  margin: 10px;
+}
