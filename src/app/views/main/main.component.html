@@ -1,33 +1,35 @@
 <div #mainView class="view-container flex-column container">
 
   <!-- Screen -->
-  <div class="flex view-wrapper screen pad-10 overflow-hidden ">
+  <div class="flex view-wrapper screen pad-10 overflow-hidden">
 
     <!-- Background -->
-    <app-box [background]="'linear-gradient(black, #001966)'"></app-box>\
+    <app-box [background]="'linear-gradient(black, #001966)'"></app-box>
 
-    <!-- Content -->
-    <ng-container [ngSwitch]="mode">
-
-      <!-- Shift Box -->
-      <app-shift-box 
-        *ngSwitchCase="'SHIFT'" 
-        [isOn]="state.shiftIsOn"
-        [direction]="state.shiftDir"
-        [loopTime]="state.shiftSpeed"
-        [boxSize]="state.shiftBoxSize"
-        [background]="'linear-gradient(#ffffff, #ffffff, #fffff7)'">
-      </app-shift-box>
-      
-      <!-- Strobe Box -->
-      <app-strobe-box 
-        *ngSwitchCase="'STROBE'" 
-        [isOn]="state.strobeIsOn"
-        [rate]="state.strobeRate"
-        [background]="'linear-gradient(#ffffff, #ffffff, #fffff7)'">
-      </app-strobe-box>
-
-    </ng-container>
+    <div class="view-container">
+      <!-- Content -->
+      <ng-container [ngSwitch]="mode">
+  
+        <!-- Shift Box -->
+        <app-shift-box 
+          *ngSwitchCase="'SHIFT'" 
+          [isOn]="state.shiftIsOn"
+          [direction]="state.shiftDir"
+          [loopTime]="state.shiftSpeed"
+          [boxSize]="state.shiftBoxSize"
+          [background]="'linear-gradient(#ffffff, #ffffff, #fffff7)'">
+        </app-shift-box>
+        
+        <!-- Strobe Box -->
+        <app-strobe-box 
+          *ngSwitchCase="'STROBE'" 
+          [isOn]="state.strobeIsOn"
+          [rate]="state.strobeRate"
+          [background]="'linear-gradient(#ffffff, #ffffff, #fffff7)'">
+        </app-strobe-box>
+  
+      </ng-container>
+    </div>
 
   </div>
 

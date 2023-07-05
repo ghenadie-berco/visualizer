@@ -3,8 +3,11 @@ html,
 body {
   padding    : 0;
   margin     : 0;
-  box-sizing : border-box;
   font-family: sans-serif;
+}
+
+* {
+  box-sizing : border-box;
 }
 
 .view-container {
@@ -79,4 +82,8 @@ body {
 .centered {
   justify-content: center;
   align-items    : center;
+}
+
+.zzz {
+  border: 3px dashed red;
 }
